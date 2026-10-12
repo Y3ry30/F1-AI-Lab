@@ -18,5 +18,5 @@ Datos no oficiales proporcionados por FastF1.Unofficial data provided by FastF1.
 ## Hallazgos / Findings
 
 Spa 2024 Q: HAM 1:53.835, 0.192s mas rapido que PIA (1:54.027).
-Monza es un circuito de ¿qué hay entre valle y valle?
-Spa es un circuito de ¿qué forma tienen los tramos de arriba?
+Monza es un circuito de largas rectas
+Spa es un circuito de largas rectas y curvas muy pronunciadas

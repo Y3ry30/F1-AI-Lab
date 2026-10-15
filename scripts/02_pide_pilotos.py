@@ -8,6 +8,14 @@ from wcwidth.table_grapheme import GRAPHEME_REGIONAL_INDICATOR
 
 ANIO = 2024
 SESION = 'Q'
+
+def formato_tiempo(tiempo):
+    """Convierte un LapTime en texto m:ss.mmm"""
+    segundos = tiempo.total_seconds()
+    minutos = int(segundos // 60)
+    resto = segundos % 60
+    return f"{minutos}:{resto:06.3f}"
+
 piloto_1 = input("Piloto 1: ")
 piloto_2 = input("Piloto 2: ")
 gp = input("GP: ")
@@ -20,13 +28,7 @@ session.load()
 vuelta_1 = session.laps.pick_drivers(piloto_1).pick_fastest()
 vuelta_2 = session.laps.pick_drivers(piloto_2).pick_fastest()
 tiempo_1 = vuelta_1['LapTime']
-segundos_1 = tiempo_1.total_seconds()
-minutos_1 = int(segundos_1 // 60)
-resto_1 = segundos_1 % 60
 tiempo_2 = vuelta_2['LapTime']
-segundos_2 = tiempo_2.total_seconds()
-minutos_2 = int(segundos_2 // 60)
-resto_2 = segundos_2 % 60
 dif = (tiempo_1 - tiempo_2).total_seconds()
-print(f"{piloto_1}: {minutos_1}:{resto_1:06.3f}  |  {piloto_2}: {minutos_2}:{resto_2:06.3f}")
+print(f"{piloto_1}: {formato_tiempo(tiempo_1)}  |  {piloto_2}: {formato_tiempo(tiempo_2)}")
 print(f"Diferencia: {abs(dif):.3f}s a favor de {piloto_1 if dif < 0 else piloto_2}")
